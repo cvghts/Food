@@ -1359,8 +1359,9 @@ function cards() {
       this.parent.append(element);
     }
   }
-  (0,_services_services__WEBPACK_IMPORTED_MODULE_0__.getResource)('http://localhost:3000/menu').then(data => {
-    data.forEach(({
+  (0,_services_services__WEBPACK_IMPORTED_MODULE_0__.getResource)('db.json').then(data => {
+    console.log(data);
+    data.menu.forEach(({
       img,
       altimg,
       title,
@@ -1414,8 +1415,8 @@ function forms(formSelector, modalTimerId) {
       form.insertAdjacentElement('afterend', statusMessage);
       const formData = new FormData(form);
       const json = JSON.stringify(Object.fromEntries(formData.entries()));
-      (0,_services_services__WEBPACK_IMPORTED_MODULE_1__.postData)('http://localhost:3000/requests', json).then(data => {
-        console.log(data);
+      (0,_services_services__WEBPACK_IMPORTED_MODULE_1__.postData)('db.json', json).then(data => {
+        console.log(data.requests);
         showThanksModal(message.success);
         statusMessage.remove();
       }).catch(() => {
@@ -1445,7 +1446,7 @@ function forms(formSelector, modalTimerId) {
       (0,_modal__WEBPACK_IMPORTED_MODULE_0__.closeModal)('.modal');
     }, 4000);
   }
-  fetch('http://localhost:3000/menu').then(data => data.json()).then(res => console.log(res));
+  fetch('db.json').then(data => data.json()).then(res => console.log(res.menu));
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (forms);
 
@@ -1925,7 +1926,7 @@ window.addEventListener('DOMContentLoaded', () => {
   const modalTimerId = setTimeout(() => (0,_modules_modal__WEBPACK_IMPORTED_MODULE_2__.openModal)('.modal', modalTimerId), 50000);
   (0,_modules_tabs__WEBPACK_IMPORTED_MODULE_1__["default"])('.tabheader__item', '.tabcontent', '.tabheader__items', 'tabheader__item_active');
   (0,_modules_modal__WEBPACK_IMPORTED_MODULE_2__["default"])('[data-modal]', '.modal', modalTimerId);
-  (0,_modules_timer__WEBPACK_IMPORTED_MODULE_3__["default"])('.timer', '2025-12-01');
+  (0,_modules_timer__WEBPACK_IMPORTED_MODULE_3__["default"])('.timer', '2027-12-01');
   (0,_modules_cards__WEBPACK_IMPORTED_MODULE_4__["default"])();
   (0,_modules_calc__WEBPACK_IMPORTED_MODULE_5__["default"])();
   (0,_modules_forms__WEBPACK_IMPORTED_MODULE_6__["default"])('form', modalTimerId);

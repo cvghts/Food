@@ -44,9 +44,10 @@ function cards() {
         }
     }
 
-    getResource('http://localhost:3000/menu')
+    getResource('db.json')
         .then(data => {
-            data.forEach(({img, altimg, title, descr, price}) => {
+            console.log(data);
+            data.menu.forEach(({img, altimg, title, descr, price}) => {
                 new MenuCard(img, altimg, title, descr, price, '.menu .container').render();
             });
         });

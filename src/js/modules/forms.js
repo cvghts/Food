@@ -32,9 +32,9 @@ function forms(formSelector, modalTimerId) {
 
             const json = JSON.stringify(Object.fromEntries(formData.entries()));
 
-            postData('http://localhost:3000/requests', json)
+            postData('db.json', json)
             .then(data => {
-                console.log(data);
+                console.log(data.requests);
                 showThanksModal(message.success);
                 statusMessage.remove();
             }).catch(() => {
@@ -69,9 +69,9 @@ function forms(formSelector, modalTimerId) {
         }, 4000);
     }
 
-    fetch('http://localhost:3000/menu')
+    fetch('db.json')
         .then(data => data.json())
-        .then(res => console.log(res));
+        .then(res => console.log(res.menu));
 }
 
 export default forms;
